@@ -7,6 +7,12 @@ if (cluster.isMaster) {
     cluster.fork();
     cluster.fork();
 
+    /*
+        Limit the number of children;
+        Upper limit of children prevents new forks from being more effective
+        Keep the thread pool and cpu cores and logical cores in mind when deceiding number of possible forks
+    */
+
 } else {
     // I'm a child, I'm going to act like a server and do nothing else
     const express = require('express');
